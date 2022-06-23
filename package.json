@@ -1,0 +1,20 @@
+{
+  "name": "jwt-auth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sparsh2002/JWT_auth_Node_Expanded.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sparsh2002/JWT_auth_Node_Expanded/issues"
+  },
+  "homepage": "https://github.com/sparsh2002/JWT_auth_Node_Expanded#readme"
+}
