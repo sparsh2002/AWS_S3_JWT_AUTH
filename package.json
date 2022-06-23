@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -13,6 +14,18 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.7.0",
+    "mongoose": "^6.3.8",
+    "mongoose-float": "^1.0.4",
+    "validator": "^13.7.0"
+  },
   "bugs": {
     "url": "https://github.com/sparsh2002/JWT_auth_Node_Expanded/issues"
   },
