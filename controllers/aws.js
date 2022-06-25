@@ -15,6 +15,7 @@ const s3 = new S3({
 function uploadFile(file) {
     const oT = typeof file
     if(oT==='object'){
+        const arr = []
         file.forEach(element => {
             const fileStream = fs.createReadStream(element.path);
             const uploadParams = {
@@ -22,10 +23,11 @@ function uploadFile(file) {
             Body: fileStream,
             Key: element.filename,
             };
-            s3.upload(uploadParams).promise(); // this will upload file to S3
+            const x = s3.upload(uploadParams).promise()
+            arr.push(x); // this will upload file to S3
         });
         // console.log('ho gaya')
-        return;
+        return arr;
     }
     else{
         const fileStream = fs.createReadStream(file.path);

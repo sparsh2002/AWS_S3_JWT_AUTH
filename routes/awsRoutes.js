@@ -35,9 +35,7 @@ router.post("/multiple", upload.array("images"), async (req, res) => {
 
 router.get("/images/:key", (req, res) => {
     const key = req.params.key;
-    // console.log(req.params.key);
     const readStream = getFileStream(key);
     readStream.pipe(res);  // this line will make image readable
-    // res.status(200).json({message:"retireved" , success:true , result:readStream })
   });
 module.exports = router;
