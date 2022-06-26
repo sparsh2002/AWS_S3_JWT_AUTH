@@ -3,15 +3,24 @@ const {uploadFile , getFileStream} = require('../middleware/awsMiddleWare')
 const fs = require("fs");
 const util = require("util");
 const unlinkFile = util.promisify(fs.unlink);
+const fsPromises = require('fs').promises 
 const FileSchema = require('../models/fileUploadModel')
 const AWSupload = async ( req , res) =>{
-    await uploadFile(req.files); 
+    const fileList = req.fileList
+
     const arr = [];
-    req.files.forEach(element => {
-        arr.push("https://"+bucket+".s3.amazonaws.com"+"/"+element.filename)
-        unlinkFile(element.path);
+    fileList.forEach(element => {
+        arr.push("https://"+bucket+".s3.amazonaws.com"+"/"+element)
+    });
+    var dir = "public"; 
+    await fsPromises.rm(dir, {
+        recursive: true
     })
 
+    if (!fs.existsSync(dir+'/images/nov')) {  // CREATE DIRECTORY IF NOT FOUND
+        fs.mkdirSync(dir+'/images/nov', { recursive: true });
+    }
+    
     FileSchema.create({name:'data file' , files:arr})
     .then(res.status(201).json({message:'success' , success:true , files:arr}))
     .catch((e) =>res.status(400).json({message:'an error occured', success:false , error:e}))
